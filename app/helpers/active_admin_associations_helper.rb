@@ -11,7 +11,7 @@ module ActiveAdminAssociationsHelper
       :relationship_class => relationship_class
     }
   end
-  
+
   def admin_form_for(record)
     active_admin_form_for [:admin, record] do |f|
       f.semantic_errors
@@ -24,27 +24,27 @@ module ActiveAdminAssociationsHelper
       f.actions
     end
   end
-  
+
   def edit_url_for(record)
     send("edit_admin_#{record.class.model_name.singular}_path", record)
   end
-  
+
   def display_method_name_for(record)
     Formtastic::FormBuilder.collection_label_methods.find { |m| record.respond_to?(m) }
   end
-  
+
   def display_name_for(record)
     record.send(display_method_name_for(record))
   end
-  
+
   def resource_administrated?(model_class)
     ActiveAdmin.resources.include?(model_class)
   end
-  
+
   def relate_to_url(object)
     send("relate_admin_#{object.class.model_name.singular}_path", object)
   end
-  
+
   def page_entries_info(collection, options = {})
     if options[:entry_name]
       entry_name = options[:entry_name]
@@ -62,7 +62,7 @@ module ActiveAdminAssociationsHelper
     end
     entries_name = entry_name.pluralize unless entries_name
 
-    if collection.num_pages < 2
+    if collection.total_pages < 2
       case collection.size
       when 0; I18n.t('active_admin.pagination.empty', :model => entries_name)
       when 1; I18n.t('active_admin.pagination.one', :model => entry_name)
