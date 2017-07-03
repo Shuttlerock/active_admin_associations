@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'ActiveAdmin Association interface' do
+describe 'ActiveAdmin Association interface', type: :feature do
   let!(:post){ Factory(:post) }
   let!(:tag){ Factory(:tag) }
 
@@ -17,7 +17,7 @@ describe 'ActiveAdmin Association interface' do
     it 'has correct inputs from form_columns config' do
       page.should have_selector('form.post fieldset.inputs input#post_title')
       page.should have_selector('form.post fieldset.inputs textarea#post_body')
-      page.should have_selector('form.post fieldset.inputs input#post_creator_id')
+      page.should have_selector('form.post fieldset.inputs input#post_creator_id', visible: false)
     end
 
     it 'has correct inputs from active_association_form config' do
@@ -26,20 +26,20 @@ describe 'ActiveAdmin Association interface' do
     end
 
     it 'has correct token input for post creator' do
-      token_input = page.find('form.post fieldset.inputs input.token-input#post_creator_id')
+      token_input = page.find('form.post fieldset.inputs input.token-input#post_creator_id', visible: false)
       token_input["type"].should == 'hidden'
       token_input['data-model-name'].should == 'user'
       token_input['value'].should == '1'
-      MultiJson.decode(token_input['data-pre']).should == [{"value" => "Bill Tester", "id" => post.creator_id}]
+      JSON.parse(token_input['data-pre']).should == [{"value" => "Bill Tester", "id" => post.creator_id}]
     end
 
     it 'has a form to relate new tags' do
       page.should have_selector('.relationship-table#relationship-table-tags form.relate-to-form')
-      page.should have_selector('#relationship-table-tags form.relate-to-form input[type="hidden"]#relationship_name')
+      page.should have_selector('#relationship-table-tags form.relate-to-form input[type="hidden"]#relationship_name', visible: false)
 
-      page.find('#relationship-table-tags form.relate-to-form input#relationship_name')['value'].should == 'tags'
+      page.find('#relationship-table-tags form.relate-to-form input#relationship_name', visible: false)['value'].should == 'tags'
 
-      token_input = page.find('#relationship-table-tags form.relate-to-form input.token-input#related_id')
+      token_input = page.find('#relationship-table-tags form.relate-to-form input.token-input#related_id', visible: false)
       token_input['data-model-name'].should == 'tag'
     end
 

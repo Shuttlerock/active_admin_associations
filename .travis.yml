@@ -1,12 +1,9 @@
 language: ruby
 rvm:
-  - "2.0.0"
-  - "2.1.10"
-  - "2.2.5"
   - "2.3.1"
+  - "2.4.1"
 gemfile:
-  - gemfiles/rails_41.gemfile
-  - gemfiles/rails_50.gemfile
+  - gemfiles/rails_51.gemfile
 services: sqlite3
 before_script:
   - bundle exec rake db:migrate

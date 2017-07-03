@@ -18,10 +18,10 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.extra_rdoc_files = ["README.md", "MIT_LICENSE.txt"]
 
-  s.add_dependency 'activeadmin', '~> 1.0.0.pre1'
-  s.add_dependency 'rails', '>= 4.0', '< 5.1'
+  s.add_dependency 'activeadmin', '>= 1.0.0'
+  s.add_dependency 'rails', '>= 5.1'
 
-  s.add_development_dependency 'rspec-rails', '~> 2.14.1'
+  s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'shoulda-matchers', '~> 2.7'
   s.add_development_dependency 'capybara', '~> 2.2'
   s.add_development_dependency 'sqlite3'
@@ -30,4 +30,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'factory_girl_rails', '~> 1.7'
   s.add_development_dependency 'coveralls'
   s.add_development_dependency "appraisal", '~> 1.0'
+  s.add_development_dependency "rake", '< 10'
 end
