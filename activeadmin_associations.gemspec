@@ -29,5 +29,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rails-controller-testing', '~> 1.0'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec-rails', '~> 4.0'
+  s.add_development_dependency 'rubocop', '~> 1.12'
+  s.add_development_dependency 'rubocop-performance', '~> 1.10'
+  s.add_development_dependency 'rubocop-rails', '~> 2.9'
+  s.add_development_dependency 'rubocop-rspec', '~> 2.2'
   s.add_development_dependency 'shoulda-matchers', '~> 4.5'
 end
