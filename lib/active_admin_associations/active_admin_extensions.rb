@@ -1,17 +1,15 @@
 module ActiveAdmin
   class Resource
-    attr_accessor :form_columns
-    attr_accessor :form_associations
-    attr_accessor :active_association_form
+    attr_accessor :form_columns, :form_associations, :active_association_form
   end
-  
+
   class << self
     def resources
-      application.namespaces.values.map{|n| 
+      application.namespaces.map  do |n|
         n.resources.send(:resources)
-      }.flatten.compact.select{|r|
-        r.class == ActiveAdmin::Resource
-      }.map(&:resource_class)
+      end.flatten.compact.select  do |r|
+        r.instance_of?(ActiveAdmin::Resource)
+      end.map(&:resource_class)
     end
   end
 end

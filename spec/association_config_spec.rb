@@ -17,25 +17,25 @@ describe ActiveAdminAssociations::AssociationConfig do
       end
     end
   end
-  
+
   it 'correctly configure multiple associtions at a time' do
-    subject[:pages].fields.should be_blank
-    subject[:photos].fields.should be_blank
+    expect(subject[:pages].fields).to be_blank
+    expect(subject[:photos].fields).to be_blank
   end
-  
+
   it 'correctly configure with a fields parameter' do
-    subject[:tags].fields.should == [:name]
+    expect(subject[:tags].fields).to eq [:name]
   end
-  
+
   it 'correctly configure with a block using the fields method' do
-    subject[:posts].fields.should == [:title, :published_at, :creator]
+    expect(subject[:posts].fields).to eq %i[title published_at creator]
   end
-  
+
   it 'correctly configure with a block using the field method' do
-    subject[:videos].fields.should == [:title, :description]
+    expect(subject[:videos].fields).to eq %i[title description]
   end
-  
+
   it 'correctly configure with a block and the fields parameter' do
-    subject[:products].fields.should == [:name, :pid, :description]
+    expect(subject[:products].fields).to eq %i[name pid description]
   end
 end

@@ -1,10 +1,5 @@
-require 'rubygems'
-gemfile = File.expand_path('../../../../Gemfile', __FILE__)
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../../Gemfile', __dir__)
 
-if File.exist?(gemfile)
-  ENV['BUNDLE_GEMFILE'] = gemfile
-  require 'bundler'
-  Bundler.setup
-end
+require 'bundler/setup' if File.exist?(ENV['BUNDLE_GEMFILE'])
 
-$:.unshift File.expand_path('../../../../lib', __FILE__)
+$:.unshift File.expand_path('../../../lib', __dir__)

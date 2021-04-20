@@ -1,20 +1,13 @@
 module Formtastic
   module TokenInputDefaultForAssociation
     extend ActiveSupport::Concern
-    
-    included do
-      alias_method_chain :default_input_type, :token_default_for_association
-      public :default_input_type
-    end
-    
-    def default_input_type_with_token_default_for_association(method, options = {})
+
+    def default_input_type(method, options = {})
       if @object
         reflection = reflection_for(method)
-        if reflection && reflection.klass.respond_to?(:autocomplete_attribute) && reflection.macro == :belongs_to
-          return :token
-        end
+        return :token if reflection && reflection.klass.respond_to?(:autocomplete_attribute) && reflection.macro == :belongs_to
       end
-      default_input_type_without_token_default_for_association(method, options)
+      super(method, options)
     end
   end
 end

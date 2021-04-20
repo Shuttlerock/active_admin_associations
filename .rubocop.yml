@@ -1,0 +1,129 @@
+# See example at https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*.rb'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Layout/LineLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Enabled: true
+  Max:     30
+
+Metrics/BlockLength:
+  Enabled:       false
+  CountComments: false
+
+Metrics/ClassLength:
+  Enabled:       false
+  CountComments: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max:     15
+
+Metrics/MethodLength:
+  Enabled:       true
+  CountComments: false
+  Max:           40
+
+Metrics/PerceivedComplexity:
+  Enabled: true
+  Max:     20
+
+Naming/BlockParameterName:
+  MinNameLength: 2
+
+Naming/MethodParameterName:
+  MinNameLength: 2
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled:       true
+  EnforcedStyle: arguments
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/ReflectionClassName:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: true
+  Max:     30
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: true
+  Max:     15
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/RepeatedDescription:
+  Enabled: false
+
+RSpec/RepeatedExample:
+  Enabled: false
+
+# This throws an error trying to analyze the validator in GithubIdentifiable concern, so disabled until they fix it.
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: true
+  Max:     10
+
+RSpec/SubjectStub:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled:       true
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled:                   true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled:                   true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled:                   true
+  EnforcedStyleForMultiline: comma
