@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  mount ActiveAdminAssociations::Engine, :at => '/'
+  mount ActiveAdminAssociations::Engine, at: '/'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,5 +62,5 @@ Rails.application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  match '*path',  :to => 'application#render_404', :via => :all
+  match '*path', to: 'application#render_404', via: :all
 end

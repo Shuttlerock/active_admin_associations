@@ -5,9 +5,7 @@ module Formtastic
     def default_input_type(method, options = {})
       if @object
         reflection = reflection_for(method)
-        if reflection && reflection.klass.respond_to?(:autocomplete_attribute) && reflection.macro == :belongs_to
-          return :token
-        end
+        return :token if reflection && reflection.klass.respond_to?(:autocomplete_attribute) && reflection.macro == :belongs_to
       end
       super(method, options)
     end

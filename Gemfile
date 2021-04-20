@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # This is used by the dummy app during testing.
 gem 'devise'

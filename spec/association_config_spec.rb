@@ -28,14 +28,14 @@ describe ActiveAdminAssociations::AssociationConfig do
   end
 
   it 'correctly configure with a block using the fields method' do
-    expect(subject[:posts].fields).to eq [:title, :published_at, :creator]
+    expect(subject[:posts].fields).to eq %i[title published_at creator]
   end
 
   it 'correctly configure with a block using the field method' do
-    expect(subject[:videos].fields).to eq [:title, :description]
+    expect(subject[:videos].fields).to eq %i[title description]
   end
 
   it 'correctly configure with a block and the fields parameter' do
-    expect(subject[:products].fields).to eq [:name, :pid, :description]
+    expect(subject[:products].fields).to eq %i[name pid description]
   end
 end

@@ -4,7 +4,7 @@ require 'simplecov'
 require 'coveralls'
 Coveralls.wear! 'rails'
 
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+require File.expand_path('dummy/config/environment.rb', __dir__)
 require 'rspec/rails'
 require 'shoulda-matchers'
 require 'capybara/rails'
@@ -32,7 +32,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
-  config.order = "random"
+  config.order = 'random'
 
   config.include FactoryBot::Syntax::Methods
 
@@ -42,7 +42,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers,       type: :controller
   config.include Warden::Test::Helpers,                 type: :feature
 
-  [:controller, :view, :request].each do |type|
+  %i[controller view request].each do |type|
     config.include ::Rails::Controller::Testing::TestProcess,        type: type
     config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
     config.include ::Rails::Controller::Testing::Integration,        type: type
