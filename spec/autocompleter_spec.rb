@@ -15,14 +15,14 @@ describe ActiveAdminAssociations::Autocompleter do
 
     it 'returns the result with the correct format' do
       results = Tag.autocomplete_results("spa")
-      results.first.should == {"name" => "Space", "id" => tag.id}
+      expect(results.first).to eq({"name" => "Space", "id" => tag.id})
     end
   end
 
   context 'with defulat formatter' do
     it 'returns the result with the correct format' do
       results = Tag.autocomplete_results("spa")
-      results.first.should == {"label" => "Space", "value" => "Space", "id" => tag.id}
+      expect(results.first).to eq({"label" => "Space", "value" => "Space", "id" => tag.id})
     end
   end
 
@@ -36,7 +36,7 @@ describe ActiveAdminAssociations::Autocompleter do
 
     it 'returns the result with the correct format' do
       results = Tag.autocomplete_results("spa")
-      results.first.should == {"label" => "Space: #{tag.taggings.count}", "value" => "Space", "id" => tag.id}
+      expect(results.first).to eq({"label" => "Space: #{tag.taggings.count}", "value" => "Space", "id" => tag.id})
     end
   end
 
@@ -52,7 +52,7 @@ describe ActiveAdminAssociations::Autocompleter do
 
     it 'return the result with the correct format' do
       results = Tag.autocomplete_results("spa")
-      results.first.should == {"label" => "Space: Tag", "value" => "Space", "id" => tag.id}
+      expect(results.first).to eq({"label" => "Space: Tag", "value" => "Space", "id" => tag.id})
     end
   end
 end

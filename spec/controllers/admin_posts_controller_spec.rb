@@ -22,11 +22,11 @@ describe Admin::PostsController, type: :controller do
     it { should set_flash.to('The recored has been related.') }
 
     it "adds a new tagging" do
-      Tagging.count.should == @initial_tagging_count + 1
+      expect(Tagging.count).to eq @initial_tagging_count + 1
     end
 
     it 'properly relates the record' do
-      post.reload.tags.should include(tag2)
+      expect(post.reload.tags).to include(tag2)
     end
   end
 
@@ -40,7 +40,7 @@ describe Admin::PostsController, type: :controller do
     it { should set_flash.to('The recored has been related.') }
 
     it 'properly relates the record' do
-      post.reload.creator.should == user
+      expect(post.reload.creator).to eq user
     end
   end
 
@@ -55,11 +55,11 @@ describe Admin::PostsController, type: :controller do
     it { should set_flash.to('The recored has been unrelated.') }
 
     it "removes a tagging" do
-      Tagging.count.should == @initial_tagging_count -1
+      expect(Tagging.count).to eq @initial_tagging_count -1
     end
 
     it 'properly unrelates the record' do
-      post.reload.tags.should_not include(tag1)
+      expect(post.reload.tags).not_to include(tag1)
     end
   end
 
@@ -72,7 +72,7 @@ describe Admin::PostsController, type: :controller do
     it { should set_flash.to('The recored has been unrelated.') }
 
     it "removes the creator" do
-      post.reload.creator.should be_nil
+      expect(post.reload.creator).to be_nil
     end
   end
 
