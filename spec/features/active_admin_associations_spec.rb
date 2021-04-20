@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe 'ActiveAdmin Association interface', type: :feature do
-  let!(:post){ Factory(:post) }
-  let!(:tag){ Factory(:tag) }
+  let!(:post){ create(:post) }
+  let!(:tag){ create(:tag) }
 
   before do
     admin_login_as

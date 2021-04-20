@@ -3,7 +3,7 @@ require 'spec_helper'
 describe AutocompleteController, type: :controller do
   routes { ActiveAdminAssociations::Engine.routes }
 
-  let!(:tag){ Factory(:tag, :name => 'Music') }
+  let!(:tag){ create(:tag, :name => 'Music') }
 
   describe 'get #index' do
     before do
@@ -13,7 +13,7 @@ describe AutocompleteController, type: :controller do
     it { should respond_with(:success) }
 
     it "responds with json" do
-      response.content_type.should == "application/json"
+      expect(response.content_type).to eq "application/json; charset=utf-8"
     end
   end
 
@@ -29,7 +29,7 @@ describe AutocompleteController, type: :controller do
     it { should respond_with(:success) }
 
     it "responds with json" do
-      response.content_type.should == "application/json"
+      expect(response.content_type).to eq "application/json; charset=utf-8"
     end
   end
 
@@ -41,7 +41,7 @@ describe AutocompleteController, type: :controller do
     it { should respond_with(:success) }
 
     it "responds with json" do
-      response.content_type.should == "application/json"
+      expect(response.content_type).to eq "application/json; charset=utf-8"
     end
   end
 end

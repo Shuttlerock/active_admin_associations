@@ -6,12 +6,12 @@ Coveralls.wear! 'rails'
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'shoulda-matchers'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
+require 'rails-controller-testing'
 
 require_relative 'dummy/app/admin/post'
 require_relative 'dummy/app/admin/dashboard'
@@ -34,12 +34,21 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
 
-  config.include Devise::TestHelpers, :type => :controller
-  config.include Warden::Test::Helpers, :type => :feature
-  config.include AdminLoginIntegrationHelper, :type => :feature
-  config.include AdminLoginControllerHelper, :type => :controller
+  config.include FactoryBot::Syntax::Methods
 
-  config.after(:each, :type => :request) do
+  config.include ::Shoulda::Matchers::ActionController, type: :controller
+  config.include AdminLoginControllerHelper,            type: :controller
+  config.include AdminLoginIntegrationHelper,           type: :feature
+  config.include Devise::Test::ControllerHelpers,       type: :controller
+  config.include Warden::Test::Helpers,                 type: :feature
+
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess,        type: type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
+    config.include ::Rails::Controller::Testing::Integration,        type: type
+  end
+
+  config.after(:each, type: :request) do
     DatabaseCleaner.clean       # Truncate the database
     Capybara.reset_sessions!    # Forget the (simulated) browser state
     Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver

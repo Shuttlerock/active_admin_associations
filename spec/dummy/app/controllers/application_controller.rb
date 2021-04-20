@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     ActionController::MethodNotAllowed,
     ActionController::NotImplemented,
     AbstractController::ActionNotFound,
-    ActionController::UnknownController,
     ActionController::UnknownHttpMethod
   ]
 

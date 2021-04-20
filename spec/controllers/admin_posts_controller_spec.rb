@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Admin::PostsController, type: :controller do
-  let!(:post){ Factory(:post) }
-  let!(:tag1){ Factory(:tag) }
-  let!(:tag2){ Factory(:tag) }
-  let!(:user){ Factory(:user) }
+  let!(:post){ create(:post) }
+  let!(:tag1){ create(:tag) }
+  let!(:tag2){ create(:tag) }
+  let!(:user){ create(:user) }
 
   before do
     admin_login_as
