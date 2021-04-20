@@ -1,9 +1,8 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
-gem 'activeadmin', '~> 1.0.0.pre1'
-gem 'sass-rails', '~> 4.0.3'
-gem 'bourbon', '~> 3.2.3'
-gem 'launchy'
+# This is used by the dummy app during testing.
 gem 'devise'
+gem 'sass-rails'
+gem 'sqlite3'
 
 gemspec

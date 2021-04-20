@@ -1,3 +1,3 @@
-appraise "rails-51" do
-  gem "rails", '< 5.2'
+appraise "rails-6" do
+  gem "rails", '~> 6.0'
 end

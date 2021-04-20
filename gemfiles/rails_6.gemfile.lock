@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     activeadmin_associations (0.2.0)
       activeadmin (~> 2.9.0)
@@ -285,6 +285,7 @@ DEPENDENCIES
   database_cleaner (~> 2.0)
   devise
   factory_bot_rails (~> 6.1)
+  rails (~> 6.0)
   rails-controller-testing (~> 1.0)
   rake (~> 13.0)
   rspec-rails (~> 4.0)

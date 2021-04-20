@@ -18,17 +18,16 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.extra_rdoc_files = ["README.md", "MIT_LICENSE.txt"]
 
-  s.add_dependency 'activeadmin', '>= 1.0.0'
-  s.add_dependency 'rails', '>= 5.1'
+  s.add_dependency 'activeadmin', '~> 2.9.0'
+  s.add_dependency 'rails', '~> 6.0'
 
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'shoulda-matchers', '~> 2.7'
-  s.add_development_dependency 'capybara', '~> 2.2'
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'bundler', '~> 1.0'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'factory_girl_rails', '~> 1.7'
-  s.add_development_dependency 'coveralls'
-  s.add_development_dependency "appraisal", '~> 1.0'
-  s.add_development_dependency "rake", '< 10'
+  s.add_development_dependency 'appraisal', '~> 2.4'
+  s.add_development_dependency 'capybara', '~> 3.35'
+  s.add_development_dependency 'coveralls', '~> 0.8'
+  s.add_development_dependency 'database_cleaner', '~> 2.0'
+  s.add_development_dependency 'factory_bot_rails', '~> 6.1'
+  s.add_development_dependency 'rails-controller-testing', '~> 1.0'
+  s.add_development_dependency 'rake', '~> 13.0'
+  s.add_development_dependency 'rspec-rails', '~> 4.0'
+  s.add_development_dependency 'shoulda-matchers', '~> 4.5'
 end
